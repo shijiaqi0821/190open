@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//注册
+Route::get('/reg','TestController@register'); //注册视图
+Route::post('/regdo','TestController@regdo'); //注册的编辑
+
+Route::get('/login','TestController@login');//登录
+Route::post('/logindo','TestController@logindo');//登录编辑
