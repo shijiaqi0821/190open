@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 //注册
-Route::get('/reg','TestController@register'); //注册视图
+Route::get('/register','TestController@register'); //注册视图
 Route::post('/regdo','TestController@regdo'); //注册的编辑
 
 Route::get('/login','TestController@login');//登录
