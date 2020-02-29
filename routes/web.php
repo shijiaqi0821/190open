@@ -28,7 +28,7 @@ Route::post('/logindo','TestController@logindo');
 //个人中心
 Route::get('/center','TestController@center');
 
-//
+//access_token
 Route::any('/get','Getcontroller@GetAccessToken');
 
 //关于access_token
