@@ -8,7 +8,7 @@ use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
-class TestController extends AdminController
+class RegisterController extends AdminController
 {
     /**
      * Title for current resource.
@@ -35,9 +35,9 @@ class TestController extends AdminController
         $grid->column('address', __('Address'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
-        //$grid->column('pass', __('Pass'));
-        //$grid->column('appid', __('Appid'));
-        //$grid->column('secret', __('Secret'));
+        $grid->column('pass', __('Pass'));
+        $grid->column('appid', __('Appid'));
+        $grid->column('secret', __('Secret'));
 
         return $grid;
     }

@@ -64,6 +64,13 @@
         </div>
 
         <div class="form-group">
+            <label for="firstname" class="col-sm-2 control-label">确认密码</label>
+            <div class="col-sm-5">
+                <input type="password" class="form-control bname" name="pass1">
+            </div>
+        </div>
+
+        <div class="form-group">
             <label for="lastname" class="col-sm-2 control-label">公司地址</label>
             <div class="col-sm-5">
                 <textarea placeholder="请输入公司地址" class="form-control area"  name="address"></textarea>

@@ -13,7 +13,7 @@ Route::group([
     $router->get('/', 'HomeController@index')->name('admin.home');
 
     //用户管理
-    $router->resource('register', TestController::class);
+    $router->resource('register', RegisterController::class);
     //App管理
     $router->resource('app', AppController::class);
 

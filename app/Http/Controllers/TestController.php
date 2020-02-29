@@ -11,11 +11,11 @@ use Illuminate\Support\str;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Redis;
 
-class RegController extends Controller
+class TestController extends Controller
 {
     //注册视图
     public function register(){
-        return view('reg/create');
+        return view('register/create');
     }
 
     //注册的编辑
@@ -72,7 +72,6 @@ class RegController extends Controller
 
     }
 
-
     //上传文件
     function upload($file){
         if(request()->file($file)->isValid()) {
@@ -84,10 +83,9 @@ class RegController extends Controller
         exit('未获取到上传文件或上传过程出错');
     }
 
-
     //登录视图
     public function login(){
-        return view('reg/login');
+        return view('register/login');
     }
 
     //登录的编辑
@@ -96,7 +94,7 @@ class RegController extends Controller
         $name=request()->input('name');  //用户登录的方式有 邮箱，手机号
 
         //用户
-        $username=Register::where(['email'=>$name])->orwhere(['tel'=>$name])->first();
+        $username=RegisterModel::where(['email'=>$name])->orwhere(['tel'=>$name])->first();
         if($username==null){
             echo "此用户不存在 请先注册";die;
         }
@@ -114,8 +112,8 @@ class RegController extends Controller
         //将token保存到redis中
         $redis_token="token:".$token;
         $token_info=[
-            'uid'            =>$username->id,
-            'person'         =>$username->person,
+            'uid'            =>$username['id'],
+            'person'         =>$username['person'],
             'login_time'    =>time()
         ];
 
@@ -124,7 +122,6 @@ class RegController extends Controller
 
         echo "<script>alert('登录成功 正在为你跳转到个人中心');location.href='/center';</script>";
     }
-
 
     //个人中心
     public function center(){
@@ -147,6 +144,10 @@ class RegController extends Controller
         $secret=$appinfo['secret'];
         $person=$token_info['person'];
 
-        return view('reg/center',['appid'=>$appid,'secret'=>$secret,'person'=>$person]);
+        return view('register/center',['appid'=>$appid,'secret'=>$secret,'person'=>$person]);
+    }
+
+    public function Get(){
+        echo 1111;
     }
 }

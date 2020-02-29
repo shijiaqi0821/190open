@@ -15,9 +15,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//注册
-Route::get('/register','TestController@register'); //注册视图
-Route::post('/regdo','TestController@regdo'); //注册的编辑
+//注册视图
+Route::get('/register','TestController@register');
+//注册的编辑
+Route::post('/regdo','TestController@regdo');
 
-Route::get('/login','TestController@login');//登录
-Route::post('/logindo','TestController@logindo');//登录编辑
+//登录
+Route::get('/login','TestController@login');
+//登录编辑
+Route::post('/logindo','TestController@logindo');
+
+//个人中心
+Route::get('/center','TestController@center');
+
+//
+Route::any('/get','Getcontroller@GetAccessToken');
+
+//关于access_token
+Route::prefix('/user')->middleware('token')->group(function(){
+    Route::get('/test','Getcontroller@test');//access_token接口测试
+    Route::get('/test1','Getcontroller@test1');//access_token接口测试
+});
+
