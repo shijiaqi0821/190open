@@ -10,12 +10,14 @@ use Illuminate\Support\Facades\Redis;
 
 class Getcontroller extends Controller
 {
-    //GetAccessToken
+    //获取accesstoken接口
     public function GetAccessToken(Request $request){
         $appid = $request->get('appid');
         $appsecret = $request->get('appsecret');
+
+        //判断
         if(empty($appid) || empty($appsecret)){
-            echo "缺少参数";die;
+            echo "缺少用户信息";die;
         }
         echo "appid:".$appid;echo "<br>";
         echo "appsecret:".$appsecret;echo "<br>";

@@ -140,11 +140,15 @@ class TestController extends Controller
         $appinfo=AppModel::where(['uid'=>$token_info['uid']])->first()->toArray();
         //var_dump($appinfo);
 
-        $appid=$appinfo['appid'];
-        $secret=$appinfo['secret'];
-        $person=$token_info['person'];
+        if($appinfo){
+            $appid=$appinfo['appid'];
+            $secret=$appinfo['secret'];
+            $person=$token_info['person'];
 
-        return view('register/center',['appid'=>$appid,'secret'=>$secret,'person'=>$person]);
+            return view('reg/center',['appid'=>$appid,'secret'=>$secret,'person'=>$person]);
+        }else{
+            echo "暂无应用信息";
+        }
     }
 
     public function Get(){

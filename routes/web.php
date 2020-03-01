@@ -37,3 +37,10 @@ Route::prefix('/user')->middleware('token')->group(function(){
     Route::get('/test1','Getcontroller@test1');//access_token接口测试
 });
 
+###############################
+
+//GitHub登录
+Route::any('/github','GithubController@index');
+Route::any('/github/callback','GithubController@callback');
+
+
